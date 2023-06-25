@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Quiz.Core;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +30,8 @@ namespace Quiz.View.Pages
 
         private void Btn_Add_Questions(object sender, RoutedEventArgs e)
         {
-
+            FileReader fileReader = new FileReader();
+            MessageBox.Show(fileReader.LoadData());
         }
     }
 }

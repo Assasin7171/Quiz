@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Quiz.Core1\Quiz.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\001-home.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
