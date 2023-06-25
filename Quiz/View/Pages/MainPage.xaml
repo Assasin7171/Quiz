@@ -1,0 +1,23 @@
+﻿<Page x:Class="Quiz.View.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Quiz.View.Pages" xmlns:customcontrols="clr-namespace:Quiz.CustomControls"
+      mc:Ignorable="d"
+      Height="830" Width="1200"
+      Title="MainPage">
+    <Border Background="#13428e"
+            Margin="5"
+            BorderBrush="Black"
+            CornerRadius="5"
+            BorderThickness="1">
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    ButtonBase.Click="Btn_Nav_Click">
+            <customcontrols:NavButton Background="#24539e" Foreground="White" Text="Admin" ImageSource="/Images/002-setting.png" NavUrl="/View/Pages/Admin.xaml"/>
+            <customcontrols:NavButton Background="#24539e" Foreground="White" Text="Home" ImageSource="/Images/001-home.png" NavUrl="/View/Pages/Home.xaml"/>
+        </StackPanel>
+    </Border>
+</Page>

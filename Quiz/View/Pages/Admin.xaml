@@ -1,0 +1,53 @@
+﻿<Page x:Class="Quiz.View.Pages.Admin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Quiz.View.Pages"
+      mc:Ignorable="d"
+      Background="#02317d"
+      Height="830" Width="1200"
+      Title="Admin">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Button Template="{DynamicResource Button.BrowseBack}"
+                    Height="50"
+                    Width="60"
+                    Margin="9"
+                    Background="Transparent"
+                    HorizontalAlignment="Left"
+                    Command="NavigationCommands.BrowseBack">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Height="26" Source="/Images/003-back.png"/>
+                    <Border Grid.Row="1"
+                            BorderBrush="Black" 
+                            BorderThickness="0 0 0 1">
+                        <TextBlock FontSize="15" 
+                                   Foreground="White"
+                                   Text="Do Tyłu"/>
+                        
+                    </Border>
+                    
+                </Grid>
+            </Button>
+        </StackPanel>
+        <Border Margin="7" Grid.Row="1" BorderBrush="Black" BorderThickness="0 1 0 0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Button Click="Btn_Add_Questions" 
+                        FontSize="24" 
+                        Padding="5"
+                        Margin="8"
+                        Content="Imoportuj pytania z pliku"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,44 @@
+﻿<Window x:Class="Quiz.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quiz"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="MainWindow" Height="860" Width="1200">
+    <Border Background="#02317d"
+            BorderThickness="1"
+            CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right"
+                        Margin="5"
+                        Grid.Row="0"
+                        Orientation="Horizontal">
+                <Button Content="-"
+                        Click="Btn_Minimize_Button"
+                        Height="20"
+                        Width="20"/>
+                <Button Content="[]"
+                        Click="Btn_Maximize_Button"
+                        Height="20"
+                        Width="20"/>
+                <Button Content="X"
+                        Click="Btn_Exit_Button"
+                        Height="20"
+                        Width="20"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <Frame VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Source="/View/Pages/MainPage.xaml" NavigationUIVisibility="Hidden"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+   
+</Window>
