@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Quiz.Core1\Quiz.Core.csproj" />
+    <ProjectReference Include="..\Quiz.Core\Quiz.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
