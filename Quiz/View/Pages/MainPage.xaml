@@ -16,8 +16,14 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     ButtonBase.Click="Btn_Nav_Click">
-            <customcontrols:NavButton Background="#24539e" Foreground="White" Text="Admin" ImageSource="/Images/002-setting.png" NavUrl="/View/Pages/Admin.xaml"/>
-            <customcontrols:NavButton Background="#24539e" Foreground="White" Text="Home" ImageSource="/Images/001-home.png" NavUrl="/View/Pages/Home.xaml"/>
+            <customcontrols:NavButton Background="#24539e" 
+                                      Foreground="White" Text="Admin" 
+                                      ImageSource="/Images/002-setting.png"
+                                      NavUrl="/View/Pages/Admin.xaml"/>
+            <customcontrols:NavButton Background="#24539e" 
+                                      Foreground="White" Text="Home" 
+                                      ImageSource="/Images/001-home.png" 
+                                      NavUrl="/View/Pages/Home.xaml"/>
         </StackPanel>
     </Border>
 </Page>

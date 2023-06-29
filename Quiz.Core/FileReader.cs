@@ -13,7 +13,11 @@ namespace Quiz.Core
         string filePath = string.Empty;
         string fileContent = string.Empty;
 
-        public string LoadData()
+        /// <summary>
+        /// Ta Funkcja pobiera z wskazanego folderu plik/pliki.
+        /// </summary>
+        /// <returns>Zawartość pobranych plików</returns>
+        public string LoadDataFromFileToDB()
         {
             OpenFileDialog ofd = new OpenFileDialog();
 

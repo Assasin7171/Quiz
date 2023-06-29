@@ -1,13 +1,13 @@
-﻿<Page x:Class="Quiz.View.Pages.Admin"
+﻿<Page x:Class="Quiz.View.Pages.QuestionsAndAnswers"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Quiz.View.Pages"
-      mc:Ignorable="d"
+      mc:Ignorable="d" 
       Background="#02317d"
       Height="830" Width="1200"
-      Title="Admin">
+      Title="QuestionsAndAnswers">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -34,9 +34,9 @@
                         <TextBlock FontSize="15" 
                                    Foreground="White"
                                    Text="Do Tyłu"/>
-                        
+
                     </Border>
-                    
+
                 </Grid>
             </Button>
         </StackPanel>
@@ -44,16 +44,24 @@
                 BorderBrush="Black" 
                 BorderThickness="0 1 0 0">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <Button Click="Btn_Add_Questions" 
-                        FontSize="24" 
-                        Padding="5"
-                        Margin="8"
-                        Content="Imoportuj pytania z pliku"/>
-                <Button Content="Zobacz pytania i odpowiedzi"
-                        FontSize="24"
-                        Padding="5"
-                        Margin="8"
-                        Click="Btn_Show_Questions_Click"/>
+                <DataGrid x:Name="dataGrid" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Pytanie" 
+                                            Binding="{Binding Pytanie}"/>
+                        <DataGridTextColumn Header="Odpowiedź A"
+                                            x:Name="odpA"
+                                            Binding="{Binding A}"/>
+                        <DataGridTextColumn Header="Odpowiedź B"
+                                            x:Name="odpB"
+                                            Binding="{Binding B}"/>
+                        <DataGridTextColumn Header="Odpowiedź C"
+                                            x:Name="odpC"
+                                            Binding="{Binding C}"/>
+                        <DataGridTextColumn Header="Poprawna odpowiedz to"
+                                            DataGridRow.Selected="DataGridTextColumn_Selected"
+                                            Binding="{Binding PoprawnaOdpowiedz}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </StackPanel>
         </Border>
     </Grid>

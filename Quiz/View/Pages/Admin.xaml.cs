@@ -23,6 +23,8 @@ namespace Quiz.View.Pages
     /// </summary>
     public partial class Admin : Page
     {
+        QuizDB quizDB = new QuizDB();
+        FileReader fileReader = new FileReader();
         public Admin()
         {
             InitializeComponent();
@@ -30,8 +32,13 @@ namespace Quiz.View.Pages
 
         private void Btn_Add_Questions(object sender, RoutedEventArgs e)
         {
-            FileReader fileReader = new FileReader();
-            MessageBox.Show(fileReader.LoadData());
+            fileReader.LoadDataFromFileToDB();
+        }
+
+        private void Btn_Show_Questions_Click(object sender, RoutedEventArgs e)
+        {
+            QuestionsAndAnswers questions = new QuestionsAndAnswers();
+            NavigationService.Navigate(questions);
         }
     }
 }
