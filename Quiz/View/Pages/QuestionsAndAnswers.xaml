@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Quiz.View.Pages"
+      xmlns:customcontrols="clr-namespace:Quiz.CustomControls"
       mc:Ignorable="d" 
       Background="#02317d"
       Height="830" Width="1200"
@@ -43,26 +44,19 @@
         <Border Margin="7" Grid.Row="1" 
                 BorderBrush="Black" 
                 BorderThickness="0 1 0 0">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <DataGrid x:Name="dataGrid" AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Pytanie" 
-                                            Binding="{Binding Pytanie}"/>
-                        <DataGridTextColumn Header="Odpowiedź A"
-                                            x:Name="odpA"
-                                            Binding="{Binding A}"/>
-                        <DataGridTextColumn Header="Odpowiedź B"
-                                            x:Name="odpB"
-                                            Binding="{Binding B}"/>
-                        <DataGridTextColumn Header="Odpowiedź C"
-                                            x:Name="odpC"
-                                            Binding="{Binding C}"/>
-                        <DataGridTextColumn Header="Poprawna odpowiedz to"
-                                            DataGridRow.Selected="DataGridTextColumn_Selected"
-                                            Binding="{Binding PoprawnaOdpowiedz}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          Padding="0 10">
+                <Border Background="#13428d" 
+                        CornerRadius="5">
+                    <StackPanel x:Name="stackPanelData" 
+                            Orientation="Vertical" 
+                            Background="#13428d"
+                            HorizontalAlignment="Center">
+                    </StackPanel>
+                </Border>
+                
+            </ScrollViewer>
+
         </Border>
     </Grid>
 </Page>

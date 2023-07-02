@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Quiz.Core
 {
-    public class FileReader
+    public class FileHandling
     {
         string filePath = string.Empty;
         string fileContent = string.Empty;
@@ -29,8 +29,13 @@ namespace Quiz.Core
             {
                 filePath = ofd.FileName;
             }
-            StreamReader streamReader = new StreamReader(filePath);
-            fileContent = streamReader.ReadToEnd();
+
+            if(filePath != string.Empty)
+            {
+                StreamReader streamReader = new StreamReader(filePath);
+                fileContent = streamReader.ReadToEnd();
+
+            }
 
             return fileContent;
         }

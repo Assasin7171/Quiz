@@ -16,16 +16,110 @@
                                 <RowDefinition Height="50"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Image Grid.Row="0" Source="{TemplateBinding ImageSource}" Stretch="Uniform" Margin="2"/>
-                            <TextBlock Grid.Row="1" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Text}" TextAlignment="center" TextWrapping="wrap" Margin="2"/>
-                            <Rectangle x:Name="Line" Grid.RowSpan="2" Fill="Transparent" Stroke="RoyalBlue" StrokeDashArray="1,2" StrokeThickness="0"/>
+                            <Image Grid.Row="0" Source="{TemplateBinding ImageSource}"
+                                   Stretch="Uniform" Margin="2"/>
+                            <TextBlock Grid.Row="1" 
+                                       Foreground="{TemplateBinding Foreground}" 
+                                       Text="{TemplateBinding Text}" 
+                                       TextAlignment="center" 
+                                       TextWrapping="wrap" Margin="2"/>
+                            <Rectangle x:Name="Line" 
+                                       Grid.RowSpan="2" 
+                                       Fill="Transparent" 
+                                       Stroke="RoyalBlue" 
+                                       StrokeDashArray="1,2" 
+                                       StrokeThickness="0"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="StrokeThickness" TargetName="Line" Value="1"/>
+                            <Setter Property="StrokeThickness" 
+                                    TargetName="Line" Value="1"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:QuizDataBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:QuizDataBase}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid ShowGridLines="False">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition SharedSizeGroup="g1"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition SharedSizeGroup="g1"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition SharedSizeGroup="g1"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                       Grid.ColumnSpan="6"
+                                       Foreground="#b9deeb"
+                                       Margin="0 5"
+                                       FontSize="18"
+                                       HorizontalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       Text="{TemplateBinding Question}"/>
+                            
+                            <TextBlock Grid.Row="1" Grid.Column="0"
+                                       FontWeight="Medium"
+                                       Foreground="#b9deeb"
+                                       FontSize="15"
+                                       Margin="4"
+                                       Text="A:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1"
+                                       FontWeight="Medium"
+                                       Grid.IsSharedSizeScope="True"
+                                       x:Name="AnswerA"
+                                       Margin="4"
+                                       TextWrapping="WrapWithOverflow"
+                                       Foreground="{TemplateBinding ForgroundColorA}"
+                                       FontSize="15"
+                                       Text="{TemplateBinding AnswerA}"/>
+                                
+                            <TextBlock Grid.Row="1" Grid.Column="2"
+                                       FontWeight="Medium"
+                                       Foreground="#b9deeb"
+                                       FontSize="15"
+                                       Margin="4"
+                                       Text="B:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3"
+                                       x:Name="AnswerB"
+                                       Foreground="{TemplateBinding ForgroundColorB}"
+                                       TextWrapping="WrapWithOverflow"
+                                       Margin="4"
+                                       Grid.IsSharedSizeScope="True"
+                                       FontWeight="Medium"
+                                       FontSize="18"
+                                       Text="{TemplateBinding AnswerB}"/>
+                                
+                            <TextBlock Grid.Row="1" Grid.Column="4"
+                                       FontWeight="Medium"
+                                       Foreground="#b9deeb"
+                                       Margin="4"
+                                       FontSize="15"
+                                       Text="C:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="5"
+                                       x:Name="AnswerC"
+                                       Margin="4"
+                                       Foreground="{TemplateBinding ForgroundColorC}"
+                                       FontWeight="Medium"
+                                       TextWrapping="WrapWithOverflow"
+                                       Grid.IsSharedSizeScope="True"
+                                       FontSize="18"
+                                       Text="{TemplateBinding AnswerC}"/>
+                        </Grid>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

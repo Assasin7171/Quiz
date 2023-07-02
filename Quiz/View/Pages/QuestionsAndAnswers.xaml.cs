@@ -1,4 +1,5 @@
 ﻿using Quiz.Core;
+using Quiz.CustomControls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,44 +26,65 @@ namespace Quiz.View.Pages
 
         QuizDB quizDB = new QuizDB();
         List<QuizDB> quiz = QuizDB.LoadQuizFromDB();
+
+        //Custom Control
+        
         public QuestionsAndAnswers()
         {
             InitializeComponent();
 
-            dataGrid.ItemsSource =  quiz;
+            WyswietlDane();
 
-            SprawdzKtoraPoprawna();
+
+            //SprawdzKtoraPoprawna();
         }
+        private void WyswietlDane()
+        {
+            foreach (var item in quiz)
+            {
+                var quizG = new QuizDataBase()
+                {
+                    AnswerA = item.A,
+                    AnswerB = item.B,
+                    AnswerC = item.C,
+                    Question = item.Pytanie,
+                    PoprawnaOdpowiedz = item.PoprawnaOdpowiedz
+                    
+                };
 
-        public void SprawdzKtoraPoprawna()
+                SprawdzKtoraPoprawna(quizG);
+                quizG.BorderBrush = Brushes.Black;
+                quizG.BorderThickness = new Thickness(0,0,0,1);
+                quizG.Margin = new Thickness(0,0,0,3);
+                
+
+                stackPanelData.Children.Add(quizG);
+            }
+        }
+        //do poprawy.
+        public void SprawdzKtoraPoprawna(QuizDataBase quiz)
         {
             //iteruje przez wszystkie poprawne odpowiedzi jednoczesnie
             //sprawdzajac ktora odpowiedz jest poprawna i zmieniając jej
             //kolor na zielony
-            foreach(var item in quiz)
+            //MessageBox.Show(quiz.PoprawnaOdpowiedz);
+            switch (quiz.PoprawnaOdpowiedz)
             {
-                //MessageBox.Show(item.PoprawnaOdpowiedz);
-                switch (item.PoprawnaOdpowiedz)
-                {
-                    case "A":
-                        this.odpA.Foreground = Brushes.Red;
-                        break;
-                    case "B":
-                        this.odpB.Foreground = Brushes.Red;
-                        break;
-                    case "C":
-                        this.odpC.Foreground = Brushes.Red;
-                        break;
-                    default:
-                        break;
-                }
+                case "A":
+                    quiz.ForgroundColorA = Brushes.DarkSeaGreen;
+                    break;
+                case "B":
+                    quiz.ForgroundColorB = Brushes.DarkSeaGreen;
+                    break;
+                case "C":
+                    quiz.ForgroundColorC = Brushes.DarkSeaGreen;
+                    break;
+                default:
+                    break;
             }
-            
+
         }
 
-        private void DataGridTextColumn_Selected(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Hello World");
-        }
+
     }
 }

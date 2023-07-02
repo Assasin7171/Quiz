@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Quiz"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
+        AllowDrop="True"
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"

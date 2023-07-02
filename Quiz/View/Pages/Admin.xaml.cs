@@ -24,7 +24,7 @@ namespace Quiz.View.Pages
     public partial class Admin : Page
     {
         QuizDB quizDB = new QuizDB();
-        FileReader fileReader = new FileReader();
+        FileHandling fileReader = new FileHandling();
         public Admin()
         {
             InitializeComponent();
