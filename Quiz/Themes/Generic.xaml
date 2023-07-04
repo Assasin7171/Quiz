@@ -124,4 +124,52 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type local:QuizDataHome}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:QuizDataHome}">
+                    <Grid Margin="10"
+                          Background="CadetBlue">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="Question" 
+                                   Grid.Row="0"
+                                   TextAlignment="Center"
+                                   Foreground="White"
+                                   Margin="5"
+                                   FontSize="30"
+                                   Text="{TemplateBinding Question}"/>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <RadioButton x:Name="odpA"
+                                         GroupName="{TemplateBinding MyGroupName}"
+                                         FontSize="25"
+                                         Margin="10"
+                                         Grid.Column="0"
+                                         Content="{TemplateBinding AnswerA}"/>
+                            <RadioButton x:Name="odpB"
+                                         GroupName="{TemplateBinding MyGroupName}"
+                                         Margin="10"
+                                         FontSize="25"
+                                         Grid.Column="1"
+                                         Content="{TemplateBinding AnswerB}"/>
+                            <RadioButton x:Name="odpC"
+                                         GroupName="{TemplateBinding MyGroupName}"
+                                         Margin="10"
+                                         FontSize="25"
+                                         Grid.Column="2"
+                                         Content="{TemplateBinding AnswerC}"/>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

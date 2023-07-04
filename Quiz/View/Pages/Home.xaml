@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Quiz.View.Pages"
+      xmlns:customcontrols="clr-namespace:Quiz.CustomControls"
       mc:Ignorable="d" 
       Background="#02317d"
       Height="830" Width="1200"
@@ -36,9 +37,16 @@
                                    Text="Do Tyłu"/>
 
                     </Border>
-
                 </Grid>
             </Button>
         </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      HorizontalScrollBarVisibility="Auto"
+                      Grid.Row="1">
+            <StackPanel x:Name="StackPanel">
+            </StackPanel>
+        </ScrollViewer>
+            
+        
     </Grid>
 </Page>

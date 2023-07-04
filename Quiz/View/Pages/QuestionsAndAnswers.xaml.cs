@@ -33,10 +33,8 @@ namespace Quiz.View.Pages
         {
             InitializeComponent();
 
+
             WyswietlDane();
-
-
-            //SprawdzKtoraPoprawna();
         }
         private void WyswietlDane()
         {
@@ -49,7 +47,6 @@ namespace Quiz.View.Pages
                     AnswerC = item.C,
                     Question = item.Pytanie,
                     PoprawnaOdpowiedz = item.PoprawnaOdpowiedz
-                    
                 };
 
                 SprawdzKtoraPoprawna(quizG);
@@ -61,7 +58,8 @@ namespace Quiz.View.Pages
                 stackPanelData.Children.Add(quizG);
             }
         }
-        //do poprawy.
+
+
         public void SprawdzKtoraPoprawna(QuizDataBase quiz)
         {
             //iteruje przez wszystkie poprawne odpowiedzi jednoczesnie
