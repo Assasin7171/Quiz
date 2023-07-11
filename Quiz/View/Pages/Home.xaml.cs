@@ -75,7 +75,9 @@ namespace Quiz.View.Pages
         {
             var radioButtons = FindVisualChildren<RadioButton>(StackPanel);
             int i = 0;
-            bool IsGood = false;
+            int score = 0;
+            bool isGood = false;
+
             foreach (var radioButton in radioButtons)
             {
                 if (radioButton.IsChecked == true)
@@ -83,37 +85,23 @@ namespace Quiz.View.Pages
                     string selectedAnswer = radioButton.Content.ToString();
                     string correctAnswer = quizCopy[i].PoprawnaOdpowiedz;
 
-
-                    switch (quizCopy[i].PoprawnaOdpowiedz)
+                    if (selectedAnswer == correctAnswer)
                     {
-                        case "A":
-                            if (quizCopy[i].A == selectedAnswer)
-                            {
-                                i++;
-                                MessageBox.Show("Poprawna odpowiedz");
-                            }
-                            break;
-                        case "B":
-                            if (quizCopy[i].B == selectedAnswer)
-                            {
-                                i++;
-                                MessageBox.Show("Poprawna odpowiedz");
-                            }
-                            break;
-                        case "C":
-                            if (quizCopy[i].C == selectedAnswer)
-                            {
-                                i++;
-                                MessageBox.Show("Poprawna odpowiedz");
-                            }
-                            break;
+                        score++;
+                        //MessageBox.Show($"Poprawna odpowiedź na pytanie \n{quizCopy[i].Pytanie}");
                     }
+                    else
+                    {
+                        //MessageBox.Show($"Wybrana przez ciebie odpowiedz nie jest poprawna do pytania \n{quizCopy[i].Pytanie}");
+                    }
+
+                    
+                    i++;
                 }
-                
             }
 
+            MessageBox.Show($"Ilość zdobytych punktów to: \n{score}");
         }
-
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject parent) where T : DependencyObject
         {
             var count = VisualTreeHelper.GetChildrenCount(parent);
