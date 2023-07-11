@@ -23,16 +23,19 @@ namespace Quiz.View.Pages
     public partial class Home : Page
     {
         List<QuizDB> quiz = QuizDB.LoadQuizFromDB();
+        List<QuizDB> quizCopy = new List<QuizDB>();
         public Home()
         {
             InitializeComponent();
 
 
-            LosujPytania(10);
+            LosujPytania(2);
         }
 
         public void LosujPytania(int howMuch)
         {
+
+
             var random = new Random();
 
             for (int i = 0; i < howMuch; i++)
@@ -41,13 +44,19 @@ namespace Quiz.View.Pages
 
                 QuizDataHome quizDataBase = new QuizDataHome
                 {
+                    
                     Question = quiz[j].Pytanie,
                     AnswerA = quiz[j].A,
                     AnswerB = quiz[j].B,
                     AnswerC = quiz[j].C,
-                    MyGroupName = "odp" + j.ToString(),
+                    MyGroupName = "odp" + i.ToString(),
                 };
+                
+                
+                quizCopy.Add(quiz[j]);
                 quiz.Remove(quiz.ElementAt(j));
+
+
                 StackPanel.Children.Add(quizDataBase);
             }
 
@@ -58,8 +67,69 @@ namespace Quiz.View.Pages
                 Margin = new Thickness(5,5,5,25),
                 FontSize = 20,
             };
+            button.Click += new RoutedEventHandler(Sprawdz);
 
             StackPanel.Children.Add(button);
+        }
+        public void Sprawdz(object sender, RoutedEventArgs e)
+        {
+            var radioButtons = FindVisualChildren<RadioButton>(StackPanel);
+            int i = 0;
+            bool IsGood = false;
+            foreach (var radioButton in radioButtons)
+            {
+                if (radioButton.IsChecked == true)
+                {
+                    string selectedAnswer = radioButton.Content.ToString();
+                    string correctAnswer = quizCopy[i].PoprawnaOdpowiedz;
+
+
+                    switch (quizCopy[i].PoprawnaOdpowiedz)
+                    {
+                        case "A":
+                            if (quizCopy[i].A == selectedAnswer)
+                            {
+                                i++;
+                                MessageBox.Show("Poprawna odpowiedz");
+                            }
+                            break;
+                        case "B":
+                            if (quizCopy[i].B == selectedAnswer)
+                            {
+                                i++;
+                                MessageBox.Show("Poprawna odpowiedz");
+                            }
+                            break;
+                        case "C":
+                            if (quizCopy[i].C == selectedAnswer)
+                            {
+                                i++;
+                                MessageBox.Show("Poprawna odpowiedz");
+                            }
+                            break;
+                    }
+                }
+                
+            }
+
+        }
+
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject parent) where T : DependencyObject
+        {
+            var count = VisualTreeHelper.GetChildrenCount(parent);
+            for (var i = 0; i < count; i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T t)
+                {
+                    yield return t;
+                }
+
+                foreach (var childOfChild in FindVisualChildren<T>(child))
+                {
+                    yield return childOfChild;
+                }
+            }
         }
     }
 }
