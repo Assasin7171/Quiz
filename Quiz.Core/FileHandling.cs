@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Quiz.Core
 {
@@ -32,12 +33,44 @@ namespace Quiz.Core
 
             if(filePath != string.Empty)
             {
-                StreamReader streamReader = new StreamReader(filePath);
-                fileContent = streamReader.ReadToEnd();
-
+                try
+                {
+                    StreamReader streamReader = new StreamReader(filePath);
+                    fileContent = streamReader.ReadToEnd();
+                }
+                catch { }
             }
 
             return fileContent;
         }
+        public List<QuizDB> PrepareDataForUse(string fileName)
+        {
+            var data = fileName.Split("\n");
+            List<QuizDB> newesQuizData = new List<QuizDB>();
+            //MessageBox.Show(data[0].ToString());
+            for (int i = 1; i <= data.Length-1; i++)
+            {
+                var _ = data[i].Split(',');
+                
+                if(_.Length >= 6)
+                {
+                    //MessageBox.Show(item);
+                    QuizDB quiz = new QuizDB
+                    {
+                        Pytanie = _[1].ToString(),
+                        A = _[2].ToString(),
+                        B = _[3].ToString(),
+                        C = _[4].ToString(),
+                        PoprawnaOdpowiedz = _[5].ToString().Replace("\r", "")
+                    };
+
+                    newesQuizData.Add(quiz);
+                }
+                
+            }
+            return newesQuizData;
+            
+        }
+
     }
 }

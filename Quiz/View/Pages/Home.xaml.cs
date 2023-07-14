@@ -22,54 +22,61 @@ namespace Quiz.View.Pages
     /// </summary>
     public partial class Home : Page
     {
-        List<QuizDB> quiz = QuizDB.LoadQuizFromDB();
+        List<QuizDB> quiz = DBConnection.LoadDataFromDB();
         List<QuizDB> quizCopy = new List<QuizDB>();
         public Home()
         {
             InitializeComponent();
 
 
-            LosujPytania(2);
+            LosujPytania(10);
         }
 
         public void LosujPytania(int howMuch)
         {
 
-
-            var random = new Random();
-
-            for (int i = 0; i < howMuch; i++)
+            if(quiz.Count > 0)
             {
-                int j = random.Next(quiz.Count);
+                var random = new Random();
 
-                QuizDataHome quizDataBase = new QuizDataHome
+                for (int i = 0; i < howMuch; i++)
                 {
-                    
-                    Question = quiz[j].Pytanie,
-                    AnswerA = quiz[j].A,
-                    AnswerB = quiz[j].B,
-                    AnswerC = quiz[j].C,
-                    MyGroupName = "odp" + i.ToString(),
+                    int j = random.Next(quiz.Count);
+
+                    QuizDataHome quizDataBase = new QuizDataHome
+                    {
+
+                        Question = quiz[j].Pytanie,
+                        AnswerA = quiz[j].A,
+                        AnswerB = quiz[j].B,
+                        AnswerC = quiz[j].C,
+                        MyGroupName = "odp" + i.ToString(),
+                    };
+
+
+                    quizCopy.Add(quiz[j]);
+                    quiz.Remove(quiz.ElementAt(j));
+
+
+                    StackPanel.Children.Add(quizDataBase);
+                }
+
+                Button button = new Button()
+                {
+                    Content = "Sprawdz odpowiedzi",
+                    Width = Content.ToString().Length + 200,
+                    Margin = new Thickness(5, 5, 5, 25),
+                    FontSize = 20,
                 };
-                
-                
-                quizCopy.Add(quiz[j]);
-                quiz.Remove(quiz.ElementAt(j));
+                button.Click += new RoutedEventHandler(Sprawdz);
 
-
-                StackPanel.Children.Add(quizDataBase);
+                StackPanel.Children.Add(button);
             }
-
-            Button button = new Button()
+            else
             {
-                Content = "Sprawdz odpowiedzi",
-                Width = Content.ToString().Length + 200,
-                Margin = new Thickness(5,5,5,25),
-                FontSize = 20,
-            };
-            button.Click += new RoutedEventHandler(Sprawdz);
-
-            StackPanel.Children.Add(button);
+                MessageBox.Show("Baza danych jest pusta.");
+            }
+            
         }
         public void Sprawdz(object sender, RoutedEventArgs e)
         {
@@ -94,12 +101,11 @@ namespace Quiz.View.Pages
                     {
                         //MessageBox.Show($"Wybrana przez ciebie odpowiedz nie jest poprawna do pytania \n{quizCopy[i].Pytanie}");
                     }
-
-                    
                     i++;
                 }
             }
 
+            //końcowo będzie otwierać się nowa strona z podsumowaniem
             MessageBox.Show($"Ilość zdobytych punktów to: \n{score}");
         }
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject parent) where T : DependencyObject

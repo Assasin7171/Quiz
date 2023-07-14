@@ -23,12 +23,8 @@ namespace Quiz.View.Pages
     /// </summary>
     public partial class QuestionsAndAnswers : Page
     {
-
         QuizDB quizDB = new QuizDB();
-        List<QuizDB> quiz = QuizDB.LoadQuizFromDB();
-
-        //Custom Control
-        
+        List<QuizDB> quiz = DBConnection.LoadDataFromDB();
         public QuestionsAndAnswers()
         {
             InitializeComponent();
@@ -58,31 +54,25 @@ namespace Quiz.View.Pages
                 stackPanelData.Children.Add(quizG);
             }
         }
-
-
         public void SprawdzKtoraPoprawna(QuizDataBase quiz)
         {
             //iteruje przez wszystkie poprawne odpowiedzi jednoczesnie
             //sprawdzajac ktora odpowiedz jest poprawna i zmieniając jej
             //kolor na zielony
             //MessageBox.Show(quiz.PoprawnaOdpowiedz);
-            switch (quiz.PoprawnaOdpowiedz)
+            if(quiz.PoprawnaOdpowiedz == quiz.AnswerA)
             {
-                case "A":
-                    quiz.ForgroundColorA = Brushes.DarkSeaGreen;
-                    break;
-                case "B":
-                    quiz.ForgroundColorB = Brushes.DarkSeaGreen;
-                    break;
-                case "C":
-                    quiz.ForgroundColorC = Brushes.DarkSeaGreen;
-                    break;
-                default:
-                    break;
+                quiz.ForgroundColorA = Brushes.DarkSeaGreen;
+            }
+            else if(quiz.PoprawnaOdpowiedz== quiz.AnswerB)
+            {
+                quiz.ForgroundColorB = Brushes.DarkSeaGreen;
+            }
+            else
+            {
+                quiz.ForgroundColorC = Brushes.DarkSeaGreen;
             }
 
         }
-
-
     }
 }

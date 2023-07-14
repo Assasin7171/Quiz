@@ -32,7 +32,12 @@ namespace Quiz.View.Pages
 
         private void Btn_Add_Questions(object sender, RoutedEventArgs e)
         {
-            fileReader.LoadDataFromFileToDB();
+            List<QuizDB> data = fileReader.PrepareDataForUse(fileReader.LoadDataFromFileToDB());
+
+            foreach(var item in data)
+            {
+                DBConnection.SaveDataInDB(item);
+            }
         }
 
         private void Btn_Show_Questions_Click(object sender, RoutedEventArgs e)

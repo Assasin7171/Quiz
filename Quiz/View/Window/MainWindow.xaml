@@ -6,17 +6,15 @@
         xmlns:local="clr-namespace:Quiz"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        AllowDrop="True"
-        WindowStyle="None"
         Background="Transparent"
-        AllowsTransparency="True"
-        Title="MainWindow" Height="860" Width="1200">
+        Title="Quiz - Konrad Bojanecki" Height="860" Width="1220">
     <Border Background="#02317d"
             BorderThickness="1"
             CornerRadius="10">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <!--<RowDefinition Height="30"/>-->
+                <RowDefinition Height="0"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Right"

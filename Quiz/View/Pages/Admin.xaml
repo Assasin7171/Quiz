@@ -48,7 +48,7 @@
                         FontSize="24" 
                         Padding="5"
                         Margin="8"
-                        Content="Imoportuj pytania z pliku"/>
+                        Content="Imortuj pytania z pliku"/>
                 <Button Content="Zobacz pytania i odpowiedzi"
                         FontSize="24"
                         Padding="5"

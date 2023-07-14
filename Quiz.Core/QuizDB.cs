@@ -18,16 +18,12 @@ namespace Quiz.Core
         public string? C { get; set; }
         public string? PoprawnaOdpowiedz { get; set; }
 
-
-        DBConnection DBConnection = new DBConnection();
-
         public QuizDB()
         {
             
         }
-        public QuizDB(int id, string pytanie, string odpowiedz_A, string odpowiedz_B, string odpowiedz_C, string poprawnaOdpowiedz)
+        public QuizDB(string pytanie, string odpowiedz_A, string odpowiedz_B, string odpowiedz_C, string poprawnaOdpowiedz)
         {
-            this.ID = id;
             this.Pytanie = pytanie;
             this.A = odpowiedz_A;
             this.B = odpowiedz_B;
@@ -35,40 +31,6 @@ namespace Quiz.Core
             this.PoprawnaOdpowiedz = poprawnaOdpowiedz;
         }
 
-        public static List<QuizDB> LoadQuizFromDB()
-        {
-            List<QuizDB>? listOfQuestions = new List<QuizDB>();
 
-
-            var quarry = "SELECT * FROM quiz";
-
-            using (SQLiteCommand command = new SQLiteCommand(quarry, DBConnection.SQLiteConnection))
-            {
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
-
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count > 0)
-                {
-                    for (int i = 0; i < dataTable.Rows.Count; i++)
-                    {
-                        //MessageBox.Show(dataTable.Rows[i]["Pytanie"].ToString());
-                        QuizDB quiz = new(
-                            Convert.ToInt32(dataTable.Rows[i]["ID"]),
-                            dataTable.Rows[i]["Pytanie"].ToString(),
-                            dataTable.Rows[i]["Odpowiedz_A"].ToString(),
-                            dataTable.Rows[i]["Odpowiedz_B"].ToString(),
-                            dataTable.Rows[i]["Odpowiedz_C"].ToString(),
-                            dataTable.Rows[i]["PoprawnaOdpowiedz"].ToString()
-                            );
-                        listOfQuestions.Add(quiz);
-
-                    }
-                }
-            }
-
-            return listOfQuestions;
-        }
     }
 }
